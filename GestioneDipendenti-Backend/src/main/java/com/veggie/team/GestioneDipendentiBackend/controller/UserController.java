@@ -17,7 +17,12 @@ public class UserController {
     }
 
     @PostMapping("/ingresso/{id}")
-    public Orari impostaDataIngresso(@PathVariable int id) {
+    public boolean impostaDataIngresso(@PathVariable int id) {
         return os.inserisciDataIngresso(id);
+    }
+
+    @PostMapping("/uscita/{id}")
+    public boolean impostaDataUscita(@PathVariable int id) {
+        return os.inserisciDataUscita(id);
     }
 }

@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.util.Date;
 
 @Getter
 @Setter
@@ -18,9 +19,9 @@ public class Orari {
     @GeneratedValue(strategy=  GenerationType.IDENTITY)
     private int idOrari;
 
-    private LocalDate dataIngresso;
+    private Date dataIngresso;
 
-    private LocalDate dataUscita;
+    private Date dataUscita;
 
     // Many To One
     @ManyToOne()
