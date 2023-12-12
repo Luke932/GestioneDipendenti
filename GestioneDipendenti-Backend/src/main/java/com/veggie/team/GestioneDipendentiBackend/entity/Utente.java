@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Set;
 
 @Getter
@@ -35,5 +36,5 @@ public class Utente {
     private String cognome;
 
     @OneToMany(mappedBy="utente", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private Set<Orari> orari;
+    private List<Orari> orari;
 }
