@@ -1,60 +1,71 @@
 <div class="container mt-5">
-<h1 class="mb-5">Benvenuto {{username}}</h1>
-<table class="table mb-5">
-  <thead>
-    <tr>
-      <th>#</th>
-      <th>Nome</th>
-      <th>Cognome</th>
-      <th>Azioni</th>
-      <th>Modifica</th>
-      <th>Elimina</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let utente of utenti; let i = index">
-      <td>{{ i + 1 }}</td>
-      <td>{{ utente.nome }}</td>
-      <td>{{ utente.cognome }}</td>
-      <td>
-        <button class="btn btn-primary">Modifica</button>
-      </td>
-      <td>
-        <button class="btn btn-danger">Elimina</button>
-      </td>
-      <td>
-        <button class="btn btn-info">Visualizza Orari</button>
-      </td>
-      <td>
-        <button class="btn btn-primary">Modifica</button>
-      </td>
-      <td>
-        <button class="btn btn-danger" *ngIf="utente.id" (click)="deleteUtente(utente.id)">Elimina</button>
-      </td>
-    </tr>
-  </tbody>
-</table>
+  <h1 class="mb-5">Benvenuto {{username}}</h1>
+  <table class="table mb-5">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Nome</th>
+        <th>Cognome</th>
+        <th>Azioni</th>
+        <th>Modifica</th>
+        <th>Elimina</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let utente of utenti; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ utente.nome }}</td>
+        <td>{{ utente.cognome }}</td>
+        <td>
+          <button class="btn btn-primary"  (click)="editUtente(utente.id, utente.nome, utente.cognome, utente.username, utente.password, utente.ruolo)"
+          [disabled]="isEditing">Modifica</button>
+        </td>
+        <td>
+          <button class="btn btn-danger">Elimina</button>
+        </td>
+        <td>
+          <button class="btn btn-info">Visualizza Orari</button>
+        </td>
+        <td>
+          <button class="btn btn-danger" *ngIf="utente.id" (click)="deleteUtente(utente.id)">Elimina</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 
+  <div *ngIf="isEditing" class="mt-4">
+    <form (submit)="confirmEdit()">
+      <div class="mb-3">
+        <label for="nome" class="form-label">Nome:</label>
+        <input type="text" id="nome" [(ngModel)]="editingNome" name="nome" class="form-control" required>
+      </div>
 
-<form (submit)="confirmEdit()">
-  <label for="nome">Nome:</label>
-  <input type="text" id="nome" [(ngModel)]="editingNome" name="nome" required>
+      <div class="mb-3">
+        <label for="cognome" class="form-label">Cognome:</label>
+        <input type="text" id="cognome" [(ngModel)]="editingCognome" name="cognome" class="form-control" required>
+      </div>
 
-  <label for="cognome">Cognome:</label>
-  <input type="text" id="cognome" [(ngModel)]="editingCognome" name="cognome" required>
+      <div class="mb-3">
+        <label for="username" class="form-label">Username:</label>
+        <input type="text" id="username" [(ngModel)]="editingUsername" name="username" class="form-control" required>
+      </div>
 
-  <label for="username">Username:</label>
-  <input type="text" id="username" [(ngModel)]="editingUsername" name="username" required>
+      <div class="mb-3">
+        <label for="password" class="form-label">Password:</label>
+        <input type="password" id="password" [(ngModel)]="editingPassword" name="password" class="form-control" required>
+      </div>
 
-  <label for="password">Password:</label>
-  <input type="text" id="password" [(ngModel)]="editingPassword" name="password" required>
+      <div class="mb-3">
+        <label for="ruolo" class="form-label">Ruolo:</label>
+        <input type="text" id="ruolo" [(ngModel)]="editingRuolo" name="ruolo" class="form-control" required>
+      </div>
 
-  <label for="ruolo">Ruolo:</label>
-  <input type="text" id="ruolo" [(ngModel)]="editingRuolo" name="ruolo" required>
-
-  <button type="submit" class="btn btn-success">Conferma Modifiche</button>
-  <button type="button" class="btn btn-secondary" (click)="cancelEdit()">Annulla</button>
-</form>
+      <div class="mb-3">
+        <button type="submit" class="btn btn-success">Conferma Modifiche</button>
+        <button type="button" class="btn btn-secondary ms-2" (click)="cancelEdit()">Annulla</button>
+      </div>
+    </form>
+  </div>
 
 
 </div>
