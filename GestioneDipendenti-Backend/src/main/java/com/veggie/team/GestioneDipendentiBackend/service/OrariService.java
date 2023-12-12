@@ -1,5 +1,7 @@
 package com.veggie.team.GestioneDipendentiBackend.service;
 
-public interface OrariService {
+import com.veggie.team.GestioneDipendentiBackend.entity.Orari;
 
+public interface OrariService {
+    public Orari inserisciDataIngresso(int id);
 }

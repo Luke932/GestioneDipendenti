@@ -1,12 +1,23 @@
 package com.veggie.team.GestioneDipendentiBackend.controller;
 
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.veggie.team.GestioneDipendentiBackend.entity.Orari;
+import com.veggie.team.GestioneDipendentiBackend.entity.Utente;
+import com.veggie.team.GestioneDipendentiBackend.service.OrariService;
+import com.veggie.team.GestioneDipendentiBackend.service.UtenteService;
+import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin(origins = "*")
 @RequestMapping("/user")
 @RestController
 public class UserController {
+    private OrariService os;
 
+    public UserController(OrariService os) {
+        this.os = os;
+    }
+
+    @PostMapping("/ingresso/{id}")
+    public Orari impostaDataIngresso(@PathVariable int id) {
+        return os.inserisciDataIngresso(id);
+    }
 }
