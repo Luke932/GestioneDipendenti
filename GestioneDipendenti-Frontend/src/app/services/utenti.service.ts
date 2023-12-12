@@ -15,19 +15,19 @@ export class UtentiService {
     return this.http.get<any>(`${this.baseUrl}admin/`);
   }
 
-  saveUser(formData: FormData){
-    return this.http.post<any>(`${this.baseUrl}admin/inserimento/user`, formData);
+  saveUser(payload: any): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}admin/inserimento/user`, payload);
   }
 
-  saveAdmin(formData: FormData){
-    return this.http.post<any>(`${this.baseUrl}admin/inserimento/admin`, formData);
+  saveAdmin(payload: any): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}admin/inserimento/admin`, payload);
   }
 
-  updateUser(userId: number, payload: any): Observable<any> {
+  updateUser(userId: any, payload: any): Observable<any> {
     return this.http.put<any>(`${this.baseUrl}admin/modifica/${userId}`, payload);
   }
 
-  deleteUser(userId: number) {
-    return this.http.delete(`${this.baseUrl}admin/delete/${userId}`);
+  deleteUser(userId: any) {
+    return this.http.delete(`${this.baseUrl}admin/elimina/${userId}`);
   }
 }

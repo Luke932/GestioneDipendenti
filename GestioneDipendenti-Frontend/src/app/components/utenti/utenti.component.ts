@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { UtentiService } from 'src/app/services/utenti.service';
 
 @Component({
@@ -17,7 +18,7 @@ editingPassword: string | null = null;
 editingRuolo: string | null = null;
 isEditing: boolean = false;
 
-constructor(private utentiSrv: UtentiService){}
+constructor(private utentiSrv: UtentiService, private router: Router){}
 
 ngOnInit(): void {
   this.username = localStorage.getItem('username');
@@ -29,6 +30,8 @@ getAllUtenti(){
   this.utentiSrv.getAllUtenti().subscribe(
     utenti => {
       this.utenti = utenti;
+      console.log(utenti);
+
     },
     error => {
       console.error('Errore durante il recupero degli utenti: ', error);
@@ -76,7 +79,7 @@ confirmEdit() {
       cognome: this.editingCognome,
       username: this.editingUsername,
       password: this.editingPassword,
-      ruolo: this.editingRuolo
+      ruolo: this.editingRuolo,
     };
 
     this.utentiSrv.updateUser(this.editingUserId, utenteModificato).subscribe(
@@ -92,7 +95,9 @@ confirmEdit() {
   }
 }
 
-
+goToListaOrari(){
+  this.router.navigate(['/admin/lista']);
+}
 
 
 }

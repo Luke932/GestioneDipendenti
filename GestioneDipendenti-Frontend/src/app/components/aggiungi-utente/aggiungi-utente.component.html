@@ -1,1 +1,32 @@
-<p>aggiungi-utente works!</p>
+<div class="container mt-5">
+  <h1 class="mb-4">Crea Nuovo Utente o Admin</h1>
+
+  <form>
+    <div class="mb-3">
+      <label for="nome" class="form-label">Nome:</label>
+      <input type="text" id="nome" [(ngModel)]="newUser.nome" name="nome" class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="cognome" class="form-label">Cognome:</label>
+      <input type="text" id="cognome" [(ngModel)]="newUser.cognome" name="cognome" class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="username" class="form-label">Username:</label>
+      <input type="text" id="username" [(ngModel)]="newUser.username" name="username" class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="password" class="form-label">Password:</label>
+      <input type="password" id="password" [(ngModel)]="newUser.password" name="password" class="form-control" required>
+    </div>
+
+
+
+    <div class="mb-3">
+      <button type="submit" class="btn btn-primary" (click)="createUser()">Crea Utente</button>
+      <button type="submit" class="btn btn-success ms-2" (click)="createAdmin()">Crea Admin</button>
+    </div>
+  </form>
+</div>

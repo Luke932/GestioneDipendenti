@@ -12,6 +12,7 @@ import { AggiungiUtenteComponent } from './components/aggiungi-utente/aggiungi-u
 import { ListaOrariComponent } from './components/lista-orari/lista-orari.component';
 import { UserComponent } from './components/user/user.component';
 import { PageNotFoundComponentComponent } from './components/page-not-found-component/page-not-found-component.component';
+import { NavbarutenteComponent } from './components/navbarutente/navbarutente.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { PageNotFoundComponentComponent } from './components/page-not-found-comp
     AggiungiUtenteComponent,
     ListaOrariComponent,
     UserComponent,
-    PageNotFoundComponentComponent
+    PageNotFoundComponentComponent,
+    NavbarutenteComponent
   ],
   imports: [
     BrowserModule,

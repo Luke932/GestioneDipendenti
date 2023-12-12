@@ -17,17 +17,14 @@
         <td>{{ utente.nome }}</td>
         <td>{{ utente.cognome }}</td>
         <td>
-          <button class="btn btn-primary"  (click)="editUtente(utente.id, utente.nome, utente.cognome, utente.username, utente.password, utente.ruolo)"
+          <button class="btn btn-info" (click)="goToListaOrari()">Visualizza Orari</button>
+        </td>
+        <td>
+          <button class="btn btn-primary"  (click)="editUtente(utente.idUtente, utente.nome, utente.cognome, utente.username, utente.password, utente.ruolo)"
           [disabled]="isEditing">Modifica</button>
         </td>
         <td>
-          <button class="btn btn-danger">Elimina</button>
-        </td>
-        <td>
-          <button class="btn btn-info">Visualizza Orari</button>
-        </td>
-        <td>
-          <button class="btn btn-danger" *ngIf="utente.id" (click)="deleteUtente(utente.id)">Elimina</button>
+          <button class="btn btn-danger"  (click)="deleteUtente(utente.idUtente)">Elimina</button>
         </td>
       </tr>
     </tbody>
