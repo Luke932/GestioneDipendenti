@@ -15,6 +15,7 @@ editingCognome: string | null = null;
 editingUsername: string | null = null;
 editingPassword: string | null = null;
 editingRuolo: string | null = null;
+isEditing: boolean = false;
 
 constructor(private utentiSrv: UtentiService){}
 
@@ -54,6 +55,7 @@ editUtente(id: number, nome: string, cognome: string, username:string,password:s
   this.editingUsername = username;
   this.editingPassword = password;
   this.editingRuolo = ruolo;
+  this.isEditing = true;
 }
 
 cancelEdit() {
@@ -63,6 +65,7 @@ cancelEdit() {
   this.editingUsername = null;
   this.editingPassword = null;
   this.editingRuolo = null;
+  this.isEditing = false;
 }
 
 confirmEdit() {
