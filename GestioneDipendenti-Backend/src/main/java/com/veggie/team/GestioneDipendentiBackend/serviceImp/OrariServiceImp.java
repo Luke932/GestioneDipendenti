@@ -44,6 +44,8 @@ public class OrariServiceImp implements OrariService {
     @Override
     public boolean inserisciDataUscita(int id) {
         Utente ut = us.trovaSingoloUtente(id);
+        System.out.println(ut.getOrari().isEmpty());
+        System.out.println(ut.getOrari().get(ut.getOrari().size() - 1).getDataUscita() != null);
         if (ut.getOrari().isEmpty() || ut.getOrari().get(ut.getOrari().size() - 1).getDataUscita() != null)
             return false;
 

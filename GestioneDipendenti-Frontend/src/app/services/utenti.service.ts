@@ -37,7 +37,11 @@ export class UtentiService {
   }
 
   dataUscita(id: any): Observable<any>{
-    const url = `${this.baseUrl}user/ingresso/${id}`;
+    const url = `${this.baseUrl}user/uscita/${id}`;
     return this.http.post<boolean>(url,null);
+  }
+
+  getUtenteById(id: any): Observable<any>{
+    return this.http.get<any>(`${this.baseUrl}user/read/${id}`);
   }
 }
