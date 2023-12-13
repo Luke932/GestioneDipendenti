@@ -17,7 +17,7 @@
         <td>{{ utente.nome }}</td>
         <td>{{ utente.cognome }}</td>
         <td>
-          <button class="btn btn-info" (click)="goToListaOrari()">Visualizza Orari</button>
+          <button class="btn btn-info" (click)="goToListaOrari(utente.idUtente)">Visualizza Orari</button>
         </td>
         <td>
           <button class="btn btn-primary"  (click)="editUtente(utente.idUtente, utente.nome, utente.cognome, utente.username, utente.password, utente.ruolo)"

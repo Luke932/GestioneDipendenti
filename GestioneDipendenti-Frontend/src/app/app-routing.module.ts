@@ -18,7 +18,7 @@ const routes: Routes = [
       {path: '', redirectTo: 'utenti', pathMatch: 'full'},
       {path: 'utenti', component: UtentiComponent},
       {path: 'aggiungi', component: AggiungiUtenteComponent},
-      {path: 'lista', component: ListaOrariComponent}
+      { path: 'lista/:userId', component: ListaOrariComponent }
     ],
     canActivate: [AuthGuard],
     data: { roles: ['ADMIN'] }
