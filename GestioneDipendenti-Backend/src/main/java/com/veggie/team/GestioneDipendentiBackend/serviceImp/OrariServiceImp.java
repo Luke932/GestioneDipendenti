@@ -34,6 +34,7 @@ public class OrariServiceImp implements OrariService {
         if (!ut.getOrari().isEmpty() && ut.getOrari().get(ut.getOrari().size() - 1).getDataUscita() == null)
             return false;
 
+
         Orari ingresso = new Orari();
         ingresso.setDataIngresso(new Date(System.currentTimeMillis()));
         ingresso.setUtente(ut);

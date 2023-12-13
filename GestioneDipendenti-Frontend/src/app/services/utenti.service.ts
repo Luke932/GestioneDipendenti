@@ -30,4 +30,14 @@ export class UtentiService {
   deleteUser(userId: any) {
     return this.http.delete(`${this.baseUrl}admin/elimina/${userId}`);
   }
+
+  dataIngresso(id: any): Observable<boolean>{
+    const url = `${this.baseUrl}user/ingresso/${id}`;
+    return this.http.post<boolean>(url,null);
+  }
+
+  dataUscita(id: any): Observable<any>{
+    const url = `${this.baseUrl}user/ingresso/${id}`;
+    return this.http.post<boolean>(url,null);
+  }
 }

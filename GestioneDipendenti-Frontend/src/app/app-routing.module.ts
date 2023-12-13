@@ -8,6 +8,7 @@ import { AuthGuard } from './auth/auth.guard';
 import { UserComponent } from './components/user/user.component';
 import { PageNotFoundComponentComponent } from './components/page-not-found-component/page-not-found-component.component';
 import { ListaOrariComponent } from './components/lista-orari/lista-orari.component';
+import { HomeutenteComponent } from './components/homeutente/homeutente.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -24,7 +25,10 @@ const routes: Routes = [
   },
   {
     path: 'user',
-    component: UserComponent,
+    component: UserComponent, children: [
+      {path: '', redirectTo: 'home', pathMatch: 'full'},
+      {path: 'home', component: HomeutenteComponent}
+    ],
     canActivate: [AuthGuard],
     data: { roles: ['USER'] }
   },

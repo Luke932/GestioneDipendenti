@@ -1,56 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Welcome Admin</title>
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <!-- Custom CSS -->
-  <style>
-    body {
-      background-color: #f8f9fa;
-    }
 
-    .welcome-container {
-      margin-top: 50px;
-    }
-
-    .welcome-text {
-      font-size: 24px;
-      font-weight: bold;
-      margin-bottom: 20px;
-    }
-
-    .admin-icon {
-      font-size: 48px;
-      color: #007bff;
-    }
-  </style>
-</head>
-
-<body>
+<div class="container">
   <div class="container welcome-container text-center">
     <i class="fas fa-user-shield admin-icon"></i>
+    <h1>Benvenuto {{username}}</h1>
     <div class="welcome-text">Welcome to work!</div>
     <p class="lead">Ready to go to work?</p>
   </div>
 
-  <div class="container welcome-container text-center">
+  <div class="container welcome-container text-center mb-5">
     <i class="fas fa-user-shield admin-icon"></i>
     <div class="d-grid gap-2 col-6 mx-auto">
-        <button id="ing" [disabled]="!isIngEnabled" (click)="toggleButtons()" class="btn btn-primary" type="button">Enter</button>
-        <button id="exit" [disabled]="!isExitEnabled" (click)="toggleButtons()" class="btn btn-primary" type="button">Exit</button>
-      </div>
+      <button id="ing" [disabled]="!isIngEnabled" (click)="clickEntrata()" class="btn btn-primary" type="button">Enter</button>
+      <button id="exit" [disabled]="!isExitEnabled" (click)="clickUscita()" class="btn btn-primary" type="button">Exit</button>
+    </div>
+
   </div>
+  <table class="table table-secondary">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Day</th>
+        <th scope="col">Entry time</th>
+        <th scope="col">Exit time</th>
 
-  <!-- Bootstrap JS and Popper.js -->
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  <!-- Font Awesome -->
-  <script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
-</body>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let persona of persone; let i = index">
+        <th scope="row">{{ i + 1 }}</th>
+        <td>{{ persona.data }}</td>
+        <td>{{ persona.entrata }}</td>
+        <td>{{ persona.uscita }}</td>
+      </tr>
+    </tbody>
+  </table>
 
-</html>
+</div>
+
+

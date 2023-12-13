@@ -28,11 +28,13 @@ export class AuthService {
           this.userRoles = response.ruolo || [];
           const username = response.username;
           localStorage.setItem('username', username);
+          const id = response.idUtente;
+          localStorage.setItem('id',id);
 
           if (this.hasRoles(['ADMIN'])) {
             this.router.navigate(['/admin/utenti']);
           } else if (this.hasRoles(['USER'])) {
-            this.router.navigate(['/user']);
+            this.router.navigate(['/user/home']);
           }
 
           return true;
