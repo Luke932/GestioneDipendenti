@@ -52,4 +52,9 @@ export class UtentiService {
   deleteDate(userId: any) {
     return this.http.delete(`${this.baseUrl}admin/utenteSelezionato/${userId}/eliminaTuttiOrari`);
   }
+
+  modificaOrarioSelezionato(userId: any, idOra: any, payload: any): Observable<any> {
+    const url = `${this.baseUrl}admin/utenteSelezionato/${userId}/modificaOra/${idOra}`;
+    return this.http.put<any>(url, payload);
+  }
 }

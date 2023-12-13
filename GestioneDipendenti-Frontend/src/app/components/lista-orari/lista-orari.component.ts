@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { UtentiService } from 'src/app/services/utenti.service';
+import { FormBuilder, FormGroup } from '@angular/forms';
+
 
 @Component({
   selector: 'app-lista-orari',
@@ -15,10 +17,15 @@ dataOrario: any;
   orarioIngresso: any = [];
   orarioUscita: any = [];
   array: any = [];
+  modifyForm!: FormGroup;
 
-  constructor(private route: ActivatedRoute, private utentiSrv: UtentiService){
+  constructor(private route: ActivatedRoute, private utentiSrv: UtentiService, private fb: FormBuilder){
     this.route.params.subscribe(params => {
       this.userId = +params['userId'];
+    });
+    this.modifyForm = this.fb.group({
+      dataIngresso: [''],
+      dataUscita: ['']
     });
   }
 
