@@ -1,7 +1,10 @@
 package com.veggie.team.GestioneDipendentiBackend.controller;
 
+import com.veggie.team.GestioneDipendentiBackend.entity.Orari;
 import com.veggie.team.GestioneDipendentiBackend.entity.Utente;
+import com.veggie.team.GestioneDipendentiBackend.service.OrariService;
 import com.veggie.team.GestioneDipendentiBackend.service.UtenteService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,9 +14,12 @@ import java.util.List;
 @RestController
 public class AdminController {
     private UtenteService us;
+    private OrariService os;
 
-    public AdminController(UtenteService us) {
+    @Autowired
+    public AdminController(UtenteService us, OrariService os) {
         this.us = us;
+        this.os = os;
     }
 
     @GetMapping("/")
@@ -22,8 +28,8 @@ public class AdminController {
     }
 
     @GetMapping("/utenteSelezionato/{id}")
-    public Utente leggiUtente() {
-        return null;
+    public Utente leggiUtente(@PathVariable int id) {
+        return us.trovaSingoloUtente(id);
     }
 
     @PostMapping("/inserimento/admin")
@@ -46,5 +52,17 @@ public class AdminController {
         Utente utente = us.trovaSingoloUtente(id);
         us.eliminaUtente(id);
         return utente;
+    }
+
+    @GetMapping("/utenteSelezionato/{id}/orari")
+    public List<Orari> leggiStoricoOrari(@PathVariable int id) {
+        return os.trovaOrariSingoloUtente(id);
+    }
+
+    @DeleteMapping("utenteSelezionato/{id}/eliminaTuttiOrari")
+    public boolean eliminaStoricoOrari(@PathVariable int id) {
+        List<Orari> orari = us.trovaSingoloUtente(id).getOrari();
+        os.eliminaTuttiOrariSingoloUtente(orari, id);
+        return true;
     }
 }

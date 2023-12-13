@@ -1,5 +1,6 @@
 package com.veggie.team.GestioneDipendentiBackend.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -26,5 +27,6 @@ public class Orari {
     // Many To One
     @ManyToOne()
     @JoinColumn(name="idUtente")
+    @JsonIgnore //non lo aggiunge al Json per evitare il problema della ricorsione infinita
     private Utente utente;
 }

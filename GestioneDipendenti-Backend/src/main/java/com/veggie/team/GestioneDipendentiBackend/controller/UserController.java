@@ -10,10 +10,17 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/user")
 @RestController
 public class UserController {
+    private UtenteService us;
     private OrariService os;
 
-    public UserController(OrariService os) {
+    public UserController(OrariService os, UtenteService us) {
+        this.us = us;
         this.os = os;
+    }
+
+    @GetMapping("/read/{id}")
+    public Utente leggiUtente(@PathVariable int id) {
+        return us.trovaSingoloUtente(id);
     }
 
     @PostMapping("/ingresso/{id}")

@@ -35,6 +35,6 @@ public class Utente {
     @Column(nullable = false)
     private String cognome;
 
-    @OneToMany(mappedBy="utente", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy="utente", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Orari> orari;
 }
