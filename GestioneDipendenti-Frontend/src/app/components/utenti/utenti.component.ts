@@ -95,8 +95,8 @@ confirmEdit() {
   }
 }
 
-goToListaOrari(){
-  this.router.navigate(['/admin/lista']);
+goToListaOrari(userId: number) {
+  this.router.navigate(['/admin/lista', userId]);
 }
 
 

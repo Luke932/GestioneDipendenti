@@ -44,4 +44,12 @@ export class UtentiService {
   getUtenteById(id: any): Observable<any>{
     return this.http.get<any>(`${this.baseUrl}user/read/${id}`);
   }
+
+  getUtenteByIdAdmin(id: any): Observable<any>{
+    return this.http.get<any>(`${this.baseUrl}admin/utenteSelezionato/${id}`);
+  }
+
+  deleteDate(userId: any) {
+    return this.http.delete(`${this.baseUrl}admin/utenteSelezionato/${userId}/eliminaTuttiOrari`);
+  }
 }
