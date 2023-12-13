@@ -60,8 +60,8 @@ public class AdminController {
     }
 
     @PutMapping("utenteSelezionato/{id}/modificaOra/{idOra}")
-    public Orari modificaOrarioSelezionato(@PathVariable int id, @PathVariable int idOra) {
-        return null;
+    public Orari modificaOrarioSelezionato(@PathVariable int id, @PathVariable int idOra, @RequestBody Orari orario) {
+        return os.modificaSingoloOrari(id, idOra, orario);
     }
 
     @DeleteMapping("utenteSelezionato/{id}/eliminaTuttiOrari")

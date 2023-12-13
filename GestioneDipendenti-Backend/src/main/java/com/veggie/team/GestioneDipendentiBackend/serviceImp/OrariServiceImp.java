@@ -8,9 +8,7 @@ import com.veggie.team.GestioneDipendentiBackend.service.OrariService;
 import com.veggie.team.GestioneDipendentiBackend.service.UtenteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
-import java.time.LocalDate;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
@@ -61,7 +59,16 @@ public class OrariServiceImp implements OrariService {
     }
 
     @Override
-    //@Transactional
+    public Orari modificaSingoloOrari(int id, int idOra, Orari orario) {
+        Utente ut = us.trovaSingoloUtente(id);
+        Orari orarioTemp = or.findById(idOra).get(0);
+        orarioTemp = orario;
+        orarioTemp.setIdOrari(idOra);
+        orarioTemp.setUtente(ut);
+        return or.save(orarioTemp);
+    }
+
+    @Override
     public void eliminaTuttiOrariSingoloUtente(List<Orari> orari, int id) {
         Utente utente = us.trovaSingoloUtente(id);
         List<Orari> orariTemp = utente.getOrari();
