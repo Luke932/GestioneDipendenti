@@ -10,6 +10,5 @@ import java.util.List;
 @Repository
 public interface OrariRepo extends JpaRepository<Orari, Integer> {
     public List<Orari> findByUtente_IdUtente(int id);
-    //@Transactional
-    //void deleteByUtente_IdUtente(int idUtente);
+
 }

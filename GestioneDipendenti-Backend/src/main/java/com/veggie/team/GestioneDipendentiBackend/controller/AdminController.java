@@ -59,6 +59,11 @@ public class AdminController {
         return os.trovaOrariSingoloUtente(id);
     }
 
+    @PutMapping("utenteSelezionato/{id}/modificaOra/{idOra}")
+    public Orari modificaOrarioSelezionato(@PathVariable int id, @PathVariable int idOra) {
+        return null;
+    }
+
     @DeleteMapping("utenteSelezionato/{id}/eliminaTuttiOrari")
     public boolean eliminaStoricoOrari(@PathVariable int id) {
         List<Orari> orari = us.trovaSingoloUtente(id).getOrari();

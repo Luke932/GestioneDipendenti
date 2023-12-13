@@ -65,19 +65,11 @@ public class OrariServiceImp implements OrariService {
     public void eliminaTuttiOrariSingoloUtente(List<Orari> orari, int id) {
         Utente utente = us.trovaSingoloUtente(id);
         List<Orari> orariTemp = utente.getOrari();
-
-
-
         utente.setOrari(Collections.emptyList());
-
         ur.save(utente);
-
         for (Orari orario : orariTemp) {
             orario.setUtente(null);  // Remove reference to Utente to avoid constraints
-            //orariRepository.delete(orario);
+            or.delete(orario);
         }
-
-        //ur.save(utente);
-        //or.deleteByUtente_IdUtente(id);
     }
 }

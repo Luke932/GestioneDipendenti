@@ -9,6 +9,5 @@ public interface OrariService {
     public boolean inserisciDataIngresso(int id);
     public boolean inserisciDataUscita(int id);
     public List<Orari> trovaOrariSingoloUtente(int id);
-    //@Transactional
     public void eliminaTuttiOrariSingoloUtente(List<Orari> orari, int id);
 }
