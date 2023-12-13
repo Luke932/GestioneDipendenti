@@ -31,9 +31,12 @@ this.getUtenteSelezionato();
       response => {
         this.utente = response;
         console.log(this.utente);
-        console.log(this.utente.orari[0].dataIngresso);
+        //console.log(this.utente.orari[0].dataIngresso);
         this.dataOrario = this.utente.orari;
         console.log(this.dataOrario);
+
+        console.log(this.utente.orari.length + "!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+        
         for (let i = 0; i < this.utente.orari.length; i++) {
           const orarioCorrente = this.utente.orari[i];
 
@@ -54,6 +57,10 @@ this.getUtenteSelezionato();
           this.array.push(this.dataOrario);
           console.log(this.array);
 
+        }
+
+        if (this.utente.orari.length == 0) {
+          this.array = [];
         }
       },
       error => {
