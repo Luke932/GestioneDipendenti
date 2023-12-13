@@ -22,8 +22,8 @@ public class AdminController {
     }
 
     @GetMapping("/utenteSelezionato/{id}")
-    public Utente leggiUtente() {
-        return null;
+    public Utente leggiUtente(int id) {
+        return us.trovaSingoloUtente(id);
     }
 
     @PostMapping("/inserimento/admin")

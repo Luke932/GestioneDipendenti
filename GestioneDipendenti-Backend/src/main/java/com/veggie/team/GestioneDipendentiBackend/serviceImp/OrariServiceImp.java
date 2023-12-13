@@ -28,8 +28,9 @@ public class OrariServiceImp implements OrariService {
     @Override
     public boolean inserisciDataIngresso(int id) {
         Utente ut = us.trovaSingoloUtente(id);
-        if (ut.getOrari().get(ut.getOrari().size() - 1).getDataUscita() == null)
+        if (!ut.getOrari().isEmpty() && ut.getOrari().get(ut.getOrari().size() - 1).getDataUscita() == null)
             return false;
+
 
         Orari ingresso = new Orari();
         ingresso.setDataIngresso(new Date(System.currentTimeMillis()));
@@ -42,7 +43,7 @@ public class OrariServiceImp implements OrariService {
     @Override
     public boolean inserisciDataUscita(int id) {
         Utente ut = us.trovaSingoloUtente(id);
-        if (ut.getOrari().get(ut.getOrari().size() - 1).getDataUscita() != null)
+        if (ut.getOrari().isEmpty() || ut.getOrari().get(ut.getOrari().size() - 1).getDataUscita() != null)
             return false;
 
         ut.getOrari().get(ut.getOrari().size() - 1) //ottieni l'ultimo elemento
