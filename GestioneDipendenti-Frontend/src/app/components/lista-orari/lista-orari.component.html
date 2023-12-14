@@ -10,14 +10,29 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let item of array">
+        <tr *ngFor="let item of dataOrario">
           <td>{{utente.idUtente}}</td>
           <td>{{ item.data }}</td>
           <td>{{ item.ingresso }}</td>
           <td>{{ item.uscita }}</td>
-          <td><button class="btn btn-warning">Modify</button></td>
+          <td><button class="btn btn-warning" (click)="openModifyForm(item)">Modify</button></td>
         </tr>
   </table>
+
+  <div class="container mt-3" *ngIf="isModifyFormOpen && modifyForm.valid">
+    <form [formGroup]="modifyForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="dataIngresso">Data Ingresso:</label>
+        <input type="datetime-local" id="dataIngresso" formControlName="dataIngresso" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="dataUscita">Data Uscita:</label>
+        <input type="datetime-local" id="dataUscita" formControlName="dataUscita" class="form-control">
+      </div>
+      <button type="submit" class="btn btn-primary">Salva</button>
+      <button type="button" class="btn btn-secondary" (click)="modifyForm.reset()">Annulla</button>
+    </form>
+  </div>
 
   <div class="d-flex justify-content-center">
     <button (click)="deleteAll()" class="btn btn-primary" type="button" style="background-color: red;">Delete all</button>
