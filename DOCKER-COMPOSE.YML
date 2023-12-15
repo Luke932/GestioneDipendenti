@@ -1,0 +1,27 @@
+version: '3'
+services:
+  db:
+    image: "mysql"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: oraridipendenti
+    volumes:
+      - ./oraridipendenti_orari.sql:/docker-entrypoint-initdb.d/oraridipendenti_orari.sql
+      - ./oraridipendenti_utente.sql:/docker-entrypoint-initdb.d/oraridipendenti_utente.sql
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
+  backend:
+    image: backend-image
+    ports:
+      - "8080:8080"
+    depends_on:
+      db:
+        condition: service_healthy
+  frontend:
+    image: frontend-image
+    ports:
+      - "4200:4200"
+    depends_on:
+      - backend

@@ -22,6 +22,10 @@ public class AdminController {
         this.os = os;
     }
 
+    @GetMapping("/test")
+    public String test() {
+        return "test avvenuto con successo";
+    }
     @GetMapping("/")
     public List<Utente> leggiUtenti() {
         return us.trovaTuttiUtenti();
